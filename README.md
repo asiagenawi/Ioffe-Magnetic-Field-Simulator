@@ -9,6 +9,6 @@ The simulation calculates the magnetic field magnitude and direction at points o
 - Visualizes wire positions and the resulting field map using ROOT graphics.
 - Configurable parameters including wire radius, number of wires, current, and grid reso
 
-### Prerequisites
+## Prerequisites
 - C++ compiler supporting C++11 or newer.
 - [ROOT](https://root.cern/) framework installed and configured.
