@@ -34,7 +34,6 @@ printf("B-Field X Component  = %g\n", bFieldX);
 return bFieldX;
 }
 
-
 std::vector<double> xValues(bool bPositive)
 {
     std::vector<double> x; 
@@ -44,7 +43,6 @@ std::vector<double> xValues(bool bPositive)
         if (!bPositive) theta += PI/(nWires); 
         x.push_back(radius*cos(theta));
         printf("positioning wire at x=%g\n", x[i]);
-    
     }
     return x;
 }
@@ -62,9 +60,6 @@ std::vector<double> yValues(bool bPositive)
     return y;
 }
     
-    
-
-
 double GetBFieldMag(double xPosition, double yPosition ) {
  
 std::vector<double> xValPositive = xValues(true);
@@ -84,8 +79,7 @@ bFieldYSum += bFieldY(400, xPosition, yPosition, xValPositive[i], yValPositive[i
 bFieldXSum += bFieldX(-400, xPosition, yPosition, xValNegative[i], yValNegative[i]);
 bFieldYSum += bFieldY(-400, xPosition, yPosition, xValNegative[i], yValNegative[i]);    
 }
-    
- 
+
 double bFieldMagSum = pow( bFieldXSum*bFieldXSum + bFieldYSum*bFieldYSum, 0.5);
 printf("bFieldMagSum = %g\n", bFieldMagSum);
 printf("bFieldXSum = %g\n", bFieldXSum);
@@ -93,7 +87,6 @@ printf("bFieldYSum = %g\n", bFieldYSum);
 return bFieldMagSum;
 }
    
-
 TH2D* hFieldMap() { 
 
 TH2D* hFieldMap = new TH2D("hMap", "Ioffe B-field Map; x (m) ; y (m) ", npixels, -0.3, 0.3, npixels, -0.3, 
@@ -101,8 +94,6 @@ TH2D* hFieldMap = new TH2D("hMap", "Ioffe B-field Map; x (m) ; y (m) ", npixels,
 hFieldMap->GetZaxis()->SetTitle("|B| (T)");
 hFieldMap->GetZaxis()->SetTitleOffset(1.5);
 hFieldMap->GetZaxis()->CenterTitle();
-
-
 
 for (int i=0; i<npixels; i++) {
 for (int j=0; j<npixels; j++) {
@@ -119,9 +110,6 @@ hFieldMap->SetBinContent(i+1, j+1, fakeBfield);
 
 return hFieldMap;
 } 
-
-
-
 void DrawCanvas(TGraph* aGraphPositive, TGraph* aGraphNegative, TH2D* hFieldMap)
 {
     TCanvas* c1 = new TCanvas("Wire test", "Wire test", 700, 600);
@@ -140,12 +128,9 @@ void DrawCanvas(TGraph* aGraphPositive, TGraph* aGraphNegative, TH2D* hFieldMap)
     TImage *img = TImage::Create();
     img->FromPad(c1);
     img->WriteImage("./WireTest.png");
-
 }
-
 TGraph* gCircle(std::vector<double> xVal, std::vector<double> yVal)
 {
-
     double x[nWires];
     double y[nWires];
 
@@ -157,9 +142,6 @@ TGraph* gCircle(std::vector<double> xVal, std::vector<double> yVal)
     TGraph* gCirc = new TGraph(nWires, x, y);
     return gCirc;
 } 
-
-
-
 int go(){
 
 gStyle->SetOptStat(0);
