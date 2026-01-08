@@ -72,10 +72,6 @@ go()
   - Negative current wires (blue markers)
   - Viridis color palette for field strength
 
-## Physical Constants
-
-- `PI`: 3.1415926
-- `mu0`: Magnetic permeability of free space (4π × 10⁻⁷ T·m/A)
 
 ## Notes
 
